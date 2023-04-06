@@ -133,6 +133,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fw.h" />
+    <ClInclude Include="KeyPicker.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="MainWind.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -143,6 +146,7 @@
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="CppCLR_WinFormsProject.cpp" />
     <ClCompile Include="fw.cpp" />
+    <ClCompile Include="KeyPicker.cpp" />
     <ClCompile Include="MainWind.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -163,6 +167,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="KeyPicker.resx">
+      <DependentUpon>KeyPicker.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainWind.resx">
       <DependentUpon>MainWind.h</DependentUpon>
     </EmbeddedResource>

@@ -1,6 +1,7 @@
 #pragma once
 #pragma comment (lib, "user32.lib")
 #include "fw.h"
+#include "KeyPicker.h"
 #include <string>
 
 #define FNAME "set.cfg"
@@ -79,6 +80,8 @@ namespace AutoClickerGui {
 	private: System::Windows::Forms::TextBox^ minScale;
 
 	private: System::Windows::Forms::CheckBox^ RandomiseBox;
+	private: System::Windows::Forms::Button^ keyPickerBut;
+
 
 
 	private: System::ComponentModel::IContainer^ components;
@@ -124,6 +127,7 @@ namespace AutoClickerGui {
 			this->clickType = (gcnew System::Windows::Forms::ComboBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->keyPickerBut = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			this->click_set->SuspendLayout();
 			this->randomiseKeep->SuspendLayout();
@@ -350,11 +354,24 @@ namespace AutoClickerGui {
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &MainWind::Start);
 			// 
+			// keyPickerBut
+			// 
+			this->keyPickerBut->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->keyPickerBut->Location = System::Drawing::Point(562, 380);
+			this->keyPickerBut->Name = L"keyPickerBut";
+			this->keyPickerBut->Size = System::Drawing::Size(108, 61);
+			this->keyPickerBut->TabIndex = 4;
+			this->keyPickerBut->Text = L"Key picker";
+			this->keyPickerBut->UseVisualStyleBackColor = true;
+			this->keyPickerBut->Click += gcnew System::EventHandler(this, &MainWind::keyPickerBut_Click);
+			// 
 			// MainWind
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(682, 453);
+			this->Controls->Add(this->keyPickerBut);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->label3);
@@ -419,6 +436,10 @@ namespace AutoClickerGui {
 	private: System::Void RandomiseBox_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 		this->minScale->Enabled = this->RandomiseBox->Checked;
 		this->maxScale->Enabled = this->RandomiseBox->Checked;
+	}
+	private: System::Void keyPickerBut_Click(System::Object^ sender, System::EventArgs^ e) {
+		KeyPicker^ kp = gcnew KeyPicker();
+		kp->ShowDialog();
 	}
 };
 }

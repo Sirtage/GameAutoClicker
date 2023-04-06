@@ -16,6 +16,9 @@
     <Filter Include="Source Files\fw">
       <UniqueIdentifier>{a476e741-3817-4bee-b675-65dc3346bbac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\keyPicker">
+      <UniqueIdentifier>{97db5fa1-af98-4d9c-9345-d5b36ca10927}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc">
@@ -35,6 +38,9 @@
     <ClInclude Include="fw.h">
       <Filter>Source Files\fw</Filter>
     </ClInclude>
+    <ClInclude Include="KeyPicker.h">
+      <Filter>Source Files\keyPicker</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CppCLR_WinFormsProject.cpp">
@@ -51,6 +57,9 @@
     </ClCompile>
     <ClCompile Include="fw.cpp">
       <Filter>Source Files\fw</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyPicker.cpp">
+      <Filter>Source Files\keyPicker</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
