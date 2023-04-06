@@ -44,10 +44,10 @@ System::Void AutoClickerGui::MainWind::Start(System::Object^ sender, System::Eve
 				}
 			}
 
-			mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+			mouse_event(MOUSEEVENTF_RIGHTDOWN | MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
 			if (std::stoi(this->sets->operator[]("dcRight"))) {
 				Sleep(1);
-				mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+				mouse_event(MOUSEEVENTF_RIGHTDOWN | MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
 			}
 			Sleep(delay);
 		}
