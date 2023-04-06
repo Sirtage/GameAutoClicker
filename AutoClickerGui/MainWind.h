@@ -25,7 +25,21 @@ namespace AutoClickerGui {
 		{
 			InitializeComponent();
 			this->sets = new std::map<std::string, std::string>();
-			*this->sets = { {"enabled", "0"}, {"delLeft", "20"}, {"delRight", "10"}, {"bindLeft", "6"}, {"bindRight", "5"}, {"bindstop", "117"}, {"dcLeft", "0"}, {"dcRight", "0"}};
+			*this->sets = { {"enabled", "0"}, 
+				{"delLeft", "20"}, 
+				{"delRight", "10"}, 
+				{"bindLeft", "6"}, 
+				{"bindRight", "5"}, 
+				{"bindstop", "117"}, 
+				{"dcLeft", "0"}, 
+				{"dcRight", "0"},
+				{"rndLeft", "0"},
+				{"rnduLeft", "0"},
+				{"rnddLeft", "0"},
+				{"rndRight", "0"},
+				{"rnduRight", "0"},
+				{"rnddRight", "0"},
+			};
 		}
 
 	protected:
@@ -126,16 +140,16 @@ namespace AutoClickerGui {
 			this->groupBox1->FlatStyle = System::Windows::Forms::FlatStyle::System;
 			this->groupBox1->Location = System::Drawing::Point(12, 12);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(527, 303);
+			this->groupBox1->Size = System::Drawing::Size(442, 303);
 			this->groupBox1->TabIndex = 0;
 			this->groupBox1->TabStop = false;
-			this->groupBox1->Text = L"click settings";
+			this->groupBox1->Text = L"Mouse settings";
 			// 
 			// bindPicker
 			// 
-			this->bindPicker->Location = System::Drawing::Point(83, 63);
+			this->bindPicker->Location = System::Drawing::Point(94, 63);
 			this->bindPicker->Name = L"bindPicker";
-			this->bindPicker->Size = System::Drawing::Size(77, 22);
+			this->bindPicker->Size = System::Drawing::Size(66, 22);
 			this->bindPicker->TabIndex = 6;
 			// 
 			// click_set
@@ -147,7 +161,7 @@ namespace AutoClickerGui {
 			this->click_set->Controls->Add(this->label4);
 			this->click_set->Location = System::Drawing::Point(196, 15);
 			this->click_set->Name = L"click_set";
-			this->click_set->Size = System::Drawing::Size(325, 282);
+			this->click_set->Size = System::Drawing::Size(236, 282);
 			this->click_set->TabIndex = 5;
 			this->click_set->TabStop = false;
 			this->click_set->Text = L"Left click settings";
@@ -163,7 +177,7 @@ namespace AutoClickerGui {
 			this->randomiseKeep->Controls->Add(this->RandomiseBox);
 			this->randomiseKeep->Location = System::Drawing::Point(7, 101);
 			this->randomiseKeep->Name = L"randomiseKeep";
-			this->randomiseKeep->Size = System::Drawing::Size(312, 175);
+			this->randomiseKeep->Size = System::Drawing::Size(222, 175);
 			this->randomiseKeep->TabIndex = 4;
 			this->randomiseKeep->TabStop = false;
 			this->randomiseKeep->Text = L"Randomise delay";
@@ -276,7 +290,7 @@ namespace AutoClickerGui {
 			// 
 			this->applyButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->applyButton->Location = System::Drawing::Point(10, 91);
+			this->applyButton->Location = System::Drawing::Point(20, 255);
 			this->applyButton->Name = L"applyButton";
 			this->applyButton->Size = System::Drawing::Size(150, 36);
 			this->applyButton->TabIndex = 4;
@@ -377,6 +391,9 @@ namespace AutoClickerGui {
 		bindPicker->Text = fw::conv(this->sets->operator[]("bind" + key));
 		delSet->Text = fw::conv(this->sets->operator[]("del" + key));
 		dc->Checked = std::stoi(this->sets->operator[]("dc" + key));
+		RandomiseBox->Checked = std::stoi(this->sets->operator[]("rnd" + key));
+		minScale->Text = fw::conv(this->sets->operator[]("rndd" + key));
+		maxScale->Text = fw::conv(this->sets->operator[]("rndu" + key));
 	}
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
@@ -394,6 +411,9 @@ namespace AutoClickerGui {
 		this->sets->insert_or_assign("del" + key, fw::conv(delSet->Text));
 		this->sets->insert_or_assign("bind" + key, fw::conv(bindPicker->Text));
 		this->sets->insert_or_assign("dc" + key, dc->Checked ? "1" : "0");
+		this->sets->insert_or_assign("rnd" + key, RandomiseBox->Checked ? "1" : "0");
+		this->sets->insert_or_assign("rndd" + key, fw::conv(minScale->Text));
+		this->sets->insert_or_assign("rndu" + key, fw::conv(maxScale->Text));
 		fw::upt(FNAME, *this->sets);
 	}
 	private: System::Void RandomiseBox_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
