@@ -84,6 +84,7 @@ namespace AutoClickerGui {
 
 
 
+
 	private: System::ComponentModel::IContainer^ components;
 
 
@@ -322,15 +323,14 @@ namespace AutoClickerGui {
 			// 
 			// clickType
 			// 
+			this->clickType->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->clickType->ImeMode = System::Windows::Forms::ImeMode::Off;
 			this->clickType->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Left", L"Right" });
 			this->clickType->Location = System::Drawing::Point(94, 32);
 			this->clickType->Name = L"clickType";
 			this->clickType->Size = System::Drawing::Size(66, 24);
 			this->clickType->TabIndex = 0;
-			this->clickType->Text = L"Left";
 			this->clickType->SelectedIndexChanged += gcnew System::EventHandler(this, &MainWind::clickType_changed);
-			this->clickType->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MainWind::KeyPressCancel);
 			// 
 			// label3
 			// 
@@ -392,6 +392,7 @@ namespace AutoClickerGui {
 		}
 #pragma endregion
 	private: System::Void MainWind_Load(System::Object^ sender, System::EventArgs^ e) {
+		clickType->Text = L"Left";
 		if (fw::ex(FNAME)) {
 			*this->sets = fw::read(FNAME);
 		}
