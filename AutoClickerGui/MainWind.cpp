@@ -10,7 +10,8 @@ bool checkNumb(std::string str) {
 }
 
 System::Void AutoClickerGui::MainWind::Start(System::Object^ sender, System::EventArgs^ e) {
-	Random^ rand = gcnew Random();
+	this->rand = gcnew Random();
+	this->button1->Enabled = false;
 	this->sets->insert_or_assign("enabled", "1");
 	while (std::stoi(this->sets->operator[]("enabled")))
 	{
@@ -53,6 +54,7 @@ System::Void AutoClickerGui::MainWind::Start(System::Object^ sender, System::Eve
 		}
 		if (GetAsyncKeyState(std::stoi(this->sets->operator[]("bindstop")))) {
 			this->sets->insert_or_assign("enabled", "0");
+			this->button1->Enabled = true;
 		}
 	}
 }

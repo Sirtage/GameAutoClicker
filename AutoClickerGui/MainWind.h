@@ -21,6 +21,8 @@ namespace AutoClickerGui {
 	public ref class MainWind : public System::Windows::Forms::Form
 	{
 	public:
+		Random^ rand;
+
 		std::map<std::string, std::string>* sets;
 		MainWind(void)
 		{
@@ -59,8 +61,10 @@ namespace AutoClickerGui {
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label2;
+	public: System::Windows::Forms::Button^ button1;
+	private:
 
-	private: System::Windows::Forms::Button^ button1;
+
 	private: System::Windows::Forms::GroupBox^ click_set;
 
 	private: System::Windows::Forms::Button^ applyButton;
@@ -402,6 +406,7 @@ namespace AutoClickerGui {
 		clickType_changed(sender, e);
 	}
 	private: System::Void Start(System::Object^ sender, System::EventArgs^ e);
+	//private: static System::Void Au(std::map<std::string, std::string>*);
 
 	private: System::Void clickType_changed(System::Object^ sender, System::EventArgs^ e) {
 		click_set->Text = clickType->Text + " click settings";
