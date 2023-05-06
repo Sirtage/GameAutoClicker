@@ -133,6 +133,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fw.h" />
+    <ClInclude Include="KeyElem.h" />
     <ClInclude Include="KeyPicker.h">
       <FileType>CppForm</FileType>
     </ClInclude>
