@@ -68,6 +68,8 @@ namespace AutoClickerGui {
 	public: System::Windows::Forms::Button^ button1;
 	private:
 
+	private: System::Windows::Forms::GroupBox^ groupBox2;
+	private: System::Windows::Forms::LinkLabel^ linkLabel1;
 
 	private: System::Windows::Forms::GroupBox^ click_set;
 
@@ -137,6 +139,8 @@ namespace AutoClickerGui {
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->keyPickerBut = (gcnew System::Windows::Forms::Button());
+			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
+			this->linkLabel1 = (gcnew System::Windows::Forms::LinkLabel());
 			this->groupBox1->SuspendLayout();
 			this->click_set->SuspendLayout();
 			this->randomiseKeep->SuspendLayout();
@@ -209,14 +213,14 @@ namespace AutoClickerGui {
 			this->label6->AutoSize = true;
 			this->label6->Location = System::Drawing::Point(6, 50);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(83, 16);
+			this->label6->Size = System::Drawing::Size(80, 16);
 			this->label6->TabIndex = 2;
-			this->label6->Text = L"Down scale: ";
+			this->label6->Text = L"Down scale:";
 			// 
 			// label9
 			// 
 			this->label9->AutoSize = true;
-			this->label9->Location = System::Drawing::Point(188, 78);
+			this->label9->Location = System::Drawing::Point(191, 78);
 			this->label9->Name = L"label9";
 			this->label9->Size = System::Drawing::Size(25, 16);
 			this->label9->TabIndex = 2;
@@ -225,7 +229,7 @@ namespace AutoClickerGui {
 			// label8
 			// 
 			this->label8->AutoSize = true;
-			this->label8->Location = System::Drawing::Point(188, 50);
+			this->label8->Location = System::Drawing::Point(191, 50);
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(25, 16);
 			this->label8->TabIndex = 2;
@@ -234,7 +238,7 @@ namespace AutoClickerGui {
 			// maxScale
 			// 
 			this->maxScale->Enabled = false;
-			this->maxScale->Location = System::Drawing::Point(92, 75);
+			this->maxScale->Location = System::Drawing::Point(95, 75);
 			this->maxScale->Name = L"maxScale";
 			this->maxScale->Size = System::Drawing::Size(90, 22);
 			this->maxScale->TabIndex = 1;
@@ -244,7 +248,7 @@ namespace AutoClickerGui {
 			// minScale
 			// 
 			this->minScale->Enabled = false;
-			this->minScale->Location = System::Drawing::Point(92, 47);
+			this->minScale->Location = System::Drawing::Point(95, 47);
 			this->minScale->Name = L"minScale";
 			this->minScale->Size = System::Drawing::Size(90, 22);
 			this->minScale->TabIndex = 1;
@@ -293,7 +297,7 @@ namespace AutoClickerGui {
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(9, 28);
+			this->label4->Location = System::Drawing::Point(10, 25);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(46, 16);
 			this->label4->TabIndex = 0;
@@ -374,11 +378,33 @@ namespace AutoClickerGui {
 			this->keyPickerBut->UseVisualStyleBackColor = true;
 			this->keyPickerBut->Click += gcnew System::EventHandler(this, &MainWind::keyPickerBut_Click);
 			// 
+			// groupBox2
+			// 
+			this->groupBox2->Location = System::Drawing::Point(461, 12);
+			this->groupBox2->Name = L"groupBox2";
+			this->groupBox2->Size = System::Drawing::Size(208, 302);
+			this->groupBox2->TabIndex = 5;
+			this->groupBox2->TabStop = false;
+			this->groupBox2->Text = L"Key settings";
+			// 
+			// linkLabel1
+			// 
+			this->linkLabel1->AutoSize = true;
+			this->linkLabel1->Location = System::Drawing::Point(601, 360);
+			this->linkLabel1->Name = L"linkLabel1";
+			this->linkLabel1->Size = System::Drawing::Size(63, 16);
+			this->linkLabel1->TabIndex = 6;
+			this->linkLabel1->TabStop = true;
+			this->linkLabel1->Text = L"Key table";
+			this->linkLabel1->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &MainWind::TableLinkProc);
+			// 
 			// MainWind
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(682, 453);
+			this->Controls->Add(this->linkLabel1);
+			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->keyPickerBut);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->groupBox1);
@@ -396,6 +422,7 @@ namespace AutoClickerGui {
 			this->randomiseKeep->ResumeLayout(false);
 			this->randomiseKeep->PerformLayout();
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
@@ -456,6 +483,9 @@ namespace AutoClickerGui {
 	private: System::Void keyPickerBut_Click(System::Object^ sender, System::EventArgs^ e) {
 		KeyPicker^ kp = gcnew KeyPicker();
 		kp->ShowDialog();
+	}
+	private: System::Void TableLinkProc(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
+		System::Diagnostics::Process::Start("https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes");
 	}
 };
 }
