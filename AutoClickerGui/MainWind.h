@@ -2,6 +2,8 @@
 #pragma comment (lib, "user32.lib")
 #include "fw.h"
 #include "KeyPicker.h"
+#include "KeyElem.h"
+#include <regex>
 #include <string>
 
 #define FNAME "set.cfg"
@@ -24,10 +26,12 @@ namespace AutoClickerGui {
 		Random^ rand;
 
 		std::map<std::string, std::string>* sets;
+		std::vector<KeyBlock>* kb;
 		MainWind(void)
 		{
 			InitializeComponent();
 			this->sets = new std::map<std::string, std::string>();
+			this->kb = new std::vector<KeyBlock>(0);
 			*this->sets = { {"enabled", "0"}, 
 				{"delLeft", "20"}, 
 				{"delRight", "10"}, 
@@ -399,6 +403,12 @@ namespace AutoClickerGui {
 		clickType->Text = L"Left";
 		if (fw::ex(FNAME)) {
 			*this->sets = fw::read(FNAME);
+
+			for (std::pair<std::string, std::string> kp : *this->sets) {
+				if (std::regex_match(kp.first, std::regex("^[0-9]*$"))) {
+					this->kb->push_back(KeyBlock::deform(kp.first, kp.second));
+				}
+			}
 		}
 		else {
 			fw::upt(FNAME, *this->sets);

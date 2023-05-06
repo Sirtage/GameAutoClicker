@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "MainWind.h"
 #include <regex>
+//#include <thread>
 #include <string>
 #include <Windows.h>
 
@@ -38,10 +39,10 @@ System::Void AutoClickerGui::MainWind::Start(System::Object^ sender, System::Eve
 			size_t delay = std::stoi(this->sets->operator[]("delRight"));
 			if (std::stoi(this->sets->operator[]("rndRight"))) {
 				if (rand->Next() % 2) {
-					delay += rand->Next() % std::stoi(this->sets->operator[]("rnduRight")) + 1;
+					delay += rand->Next() % (std::stoi(this->sets->operator[]("rnduRight")) + 1);
 				}
 				else {
-					delay += -(rand->Next() % std::stoi(this->sets->operator[]("rnddRight")) + 1);
+					delay += -(rand->Next() % (std::stoi(this->sets->operator[]("rnddRight")) + 1));
 				}
 			}
 
@@ -52,6 +53,22 @@ System::Void AutoClickerGui::MainWind::Start(System::Object^ sender, System::Eve
 			}
 			Sleep(delay);
 		}
+		for (KeyBlock kpr : *this->kb) {
+			if (GetAsyncKeyState(kpr.bind)) {
+				size_t delay = kpr.del;
+				if (rand->Next() % 2) {
+					delay += rand->Next() % (kpr.rndu + 1);
+				}
+				else {
+					delay += -(rand->Next() % (kpr.rndd + 1));
+				}
+
+				keybd_event(kpr.key, 0x45, KEYEVENTF_EXTENDEDKEY | 0, 0);
+				keybd_event(kpr.key, 0x45, KEYEVENTF_EXTENDEDKEY | KEYEVENTF_KEYUP, 0);
+				Sleep(delay);
+			}
+		}
+
 		if (GetAsyncKeyState(std::stoi(this->sets->operator[]("bindstop")))) {
 			this->sets->insert_or_assign("enabled", "0");
 			this->button1->Enabled = true;
