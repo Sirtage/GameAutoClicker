@@ -26,7 +26,17 @@ namespace AutoClickerGui {
 		Random^ rand;
 
 		std::map<std::string, std::string>* sets;
-		std::vector<KeyBlock>* kb;
+	private: System::Windows::Forms::MenuStrip^ menuStrip1;
+	public:
+	private: System::Windows::Forms::ToolStripMenuItem^ FileMenu;
+	private: System::Windows::Forms::ToolStripMenuItem^ SaveButton;
+	private: System::Windows::Forms::ToolStripMenuItem^ LoadButton;
+	private: System::Windows::Forms::OpenFileDialog^ OpenDia;
+	private: System::Windows::Forms::SaveFileDialog^ SaveDia;
+
+
+
+	public: std::vector<KeyBlock>* kb;
 		MainWind(void)
 		{
 			InitializeComponent();
@@ -141,9 +151,16 @@ namespace AutoClickerGui {
 			this->keyPickerBut = (gcnew System::Windows::Forms::Button());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->linkLabel1 = (gcnew System::Windows::Forms::LinkLabel());
+			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
+			this->FileMenu = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->SaveButton = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->LoadButton = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->OpenDia = (gcnew System::Windows::Forms::OpenFileDialog());
+			this->SaveDia = (gcnew System::Windows::Forms::SaveFileDialog());
 			this->groupBox1->SuspendLayout();
 			this->click_set->SuspendLayout();
 			this->randomiseKeep->SuspendLayout();
+			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// groupBox1
@@ -155,9 +172,9 @@ namespace AutoClickerGui {
 			this->groupBox1->Controls->Add(this->label1);
 			this->groupBox1->Controls->Add(this->clickType);
 			this->groupBox1->FlatStyle = System::Windows::Forms::FlatStyle::System;
-			this->groupBox1->Location = System::Drawing::Point(12, 12);
+			this->groupBox1->Location = System::Drawing::Point(12, 31);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(442, 303);
+			this->groupBox1->Size = System::Drawing::Size(442, 284);
 			this->groupBox1->TabIndex = 0;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Mouse settings";
@@ -178,7 +195,7 @@ namespace AutoClickerGui {
 			this->click_set->Controls->Add(this->label4);
 			this->click_set->Location = System::Drawing::Point(196, 15);
 			this->click_set->Name = L"click_set";
-			this->click_set->Size = System::Drawing::Size(236, 282);
+			this->click_set->Size = System::Drawing::Size(236, 263);
 			this->click_set->TabIndex = 5;
 			this->click_set->TabStop = false;
 			this->click_set->Text = L"Left click settings";
@@ -194,7 +211,7 @@ namespace AutoClickerGui {
 			this->randomiseKeep->Controls->Add(this->RandomiseBox);
 			this->randomiseKeep->Location = System::Drawing::Point(7, 101);
 			this->randomiseKeep->Name = L"randomiseKeep";
-			this->randomiseKeep->Size = System::Drawing::Size(222, 175);
+			this->randomiseKeep->Size = System::Drawing::Size(222, 156);
 			this->randomiseKeep->TabIndex = 4;
 			this->randomiseKeep->TabStop = false;
 			this->randomiseKeep->Text = L"Randomise delay";
@@ -307,7 +324,7 @@ namespace AutoClickerGui {
 			// 
 			this->applyButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->applyButton->Location = System::Drawing::Point(20, 255);
+			this->applyButton->Location = System::Drawing::Point(22, 232);
 			this->applyButton->Name = L"applyButton";
 			this->applyButton->Size = System::Drawing::Size(150, 36);
 			this->applyButton->TabIndex = 4;
@@ -380,9 +397,9 @@ namespace AutoClickerGui {
 			// 
 			// groupBox2
 			// 
-			this->groupBox2->Location = System::Drawing::Point(461, 12);
+			this->groupBox2->Location = System::Drawing::Point(461, 31);
 			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Size = System::Drawing::Size(208, 302);
+			this->groupBox2->Size = System::Drawing::Size(208, 283);
 			this->groupBox2->TabIndex = 5;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Key settings";
@@ -398,6 +415,48 @@ namespace AutoClickerGui {
 			this->linkLabel1->Text = L"Key table";
 			this->linkLabel1->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &MainWind::TableLinkProc);
 			// 
+			// menuStrip1
+			// 
+			this->menuStrip1->ImageScalingSize = System::Drawing::Size(20, 20);
+			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->FileMenu });
+			this->menuStrip1->Location = System::Drawing::Point(0, 0);
+			this->menuStrip1->Name = L"menuStrip1";
+			this->menuStrip1->Size = System::Drawing::Size(682, 28);
+			this->menuStrip1->TabIndex = 7;
+			this->menuStrip1->Text = L"menuStrip1";
+			// 
+			// FileMenu
+			// 
+			this->FileMenu->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				this->SaveButton,
+					this->LoadButton
+			});
+			this->FileMenu->Name = L"FileMenu";
+			this->FileMenu->Size = System::Drawing::Size(46, 24);
+			this->FileMenu->Text = L"File";
+			// 
+			// SaveButton
+			// 
+			this->SaveButton->Name = L"SaveButton";
+			this->SaveButton->Size = System::Drawing::Size(125, 26);
+			this->SaveButton->Text = L"Save";
+			this->SaveButton->Click += gcnew System::EventHandler(this, &MainWind::SaveActClick);
+			// 
+			// LoadButton
+			// 
+			this->LoadButton->Name = L"LoadButton";
+			this->LoadButton->Size = System::Drawing::Size(125, 26);
+			this->LoadButton->Text = L"Load";
+			this->LoadButton->Click += gcnew System::EventHandler(this, &MainWind::OpenActClick);
+			// 
+			// OpenDia
+			// 
+			this->OpenDia->FileName = L"default.cfg";
+			// 
+			// SaveDia
+			// 
+			this->SaveDia->FileName = L"default.cfg";
+			// 
 			// MainWind
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -409,9 +468,11 @@ namespace AutoClickerGui {
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->label3);
+			this->Controls->Add(this->menuStrip1);
 			this->Cursor = System::Windows::Forms::Cursors::Default;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"MainWind";
 			this->Text = L"Game auto clicker";
 			this->Load += gcnew System::EventHandler(this, &MainWind::MainWind_Load);
@@ -421,6 +482,8 @@ namespace AutoClickerGui {
 			this->click_set->PerformLayout();
 			this->randomiseKeep->ResumeLayout(false);
 			this->randomiseKeep->PerformLayout();
+			this->menuStrip1->ResumeLayout(false);
+			this->menuStrip1->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -486,6 +549,30 @@ namespace AutoClickerGui {
 	}
 	private: System::Void TableLinkProc(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
 		System::Diagnostics::Process::Start("https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes");
+	}
+	private: System::Void SaveActClick(System::Object^ sender, System::EventArgs^ e) {
+		SaveDia->ShowDialog();
+
+		if (SaveDia->FileName != "") {
+			fw::upt(fw::conv(SaveDia->FileName).c_str(), *this->sets);
+		}
+	}
+	private: System::Void OpenActClick(System::Object^ sender, System::EventArgs^ e) {
+		OpenDia->ShowDialog();
+
+		if (OpenDia->FileName != "") {
+			*this->sets = fw::read(fw::conv(OpenDia->FileName).c_str());
+			//clickType->Text = "Left";
+
+			click_set->Text = clickType->Text + " click settings";
+			std::string key = fw::conv(clickType->Text);
+			bindPicker->Text = fw::conv(this->sets->operator[]("bind" + key));
+			delSet->Text = fw::conv(this->sets->operator[]("del" + key));
+			dc->Checked = std::stoi(this->sets->operator[]("dc" + key));
+			RandomiseBox->Checked = std::stoi(this->sets->operator[]("rnd" + key));
+			minScale->Text = fw::conv(this->sets->operator[]("rndd" + key));
+			maxScale->Text = fw::conv(this->sets->operator[]("rndu" + key));
+		}
 	}
 };
 }
