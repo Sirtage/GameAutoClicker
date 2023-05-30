@@ -33,6 +33,20 @@ namespace AutoClickerGui {
 	private: System::Windows::Forms::ToolStripMenuItem^ LoadButton;
 	private: System::Windows::Forms::OpenFileDialog^ OpenDia;
 	private: System::Windows::Forms::SaveFileDialog^ SaveDia;
+	private: System::Windows::Forms::ToolStripMenuItem^ aboutToolStripMenuItem;
+	private: System::Windows::Forms::TextBox^ textBox1;
+	private: System::Windows::Forms::ComboBox^ comboBox1;
+	private: System::Windows::Forms::Label^ label11;
+	private: System::Windows::Forms::Label^ label10;
+	private: System::Windows::Forms::CheckBox^ stamina_button;
+	private: System::Windows::Forms::Label^ label13;
+	private: System::Windows::Forms::GroupBox^ groupBox3;
+	private: System::Windows::Forms::CheckBox^ checkBox1;
+	private: System::Windows::Forms::Button^ button2;
+	private: System::Windows::Forms::TextBox^ textBox2;
+	private: System::Windows::Forms::Label^ label12;
+	private: System::Windows::Forms::GroupBox^ groupBox4;
+	private: System::Windows::Forms::Label^ label14;
 
 
 
@@ -155,12 +169,29 @@ namespace AutoClickerGui {
 			this->FileMenu = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->SaveButton = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->LoadButton = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->aboutToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->OpenDia = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->SaveDia = (gcnew System::Windows::Forms::SaveFileDialog());
+			this->label10 = (gcnew System::Windows::Forms::Label());
+			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->label11 = (gcnew System::Windows::Forms::Label());
+			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
+			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->label12 = (gcnew System::Windows::Forms::Label());
+			this->groupBox4 = (gcnew System::Windows::Forms::GroupBox());
+			this->label13 = (gcnew System::Windows::Forms::Label());
+			this->stamina_button = (gcnew System::Windows::Forms::CheckBox());
+			this->checkBox1 = (gcnew System::Windows::Forms::CheckBox());
+			this->label14 = (gcnew System::Windows::Forms::Label());
 			this->groupBox1->SuspendLayout();
 			this->click_set->SuspendLayout();
 			this->randomiseKeep->SuspendLayout();
+			this->groupBox2->SuspendLayout();
 			this->menuStrip1->SuspendLayout();
+			this->groupBox3->SuspendLayout();
+			this->groupBox4->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// groupBox1
@@ -174,7 +205,7 @@ namespace AutoClickerGui {
 			this->groupBox1->FlatStyle = System::Windows::Forms::FlatStyle::System;
 			this->groupBox1->Location = System::Drawing::Point(12, 31);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(442, 284);
+			this->groupBox1->Size = System::Drawing::Size(442, 315);
 			this->groupBox1->TabIndex = 0;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Mouse settings";
@@ -188,14 +219,15 @@ namespace AutoClickerGui {
 			// 
 			// click_set
 			// 
+			this->click_set->Controls->Add(this->stamina_button);
 			this->click_set->Controls->Add(this->randomiseKeep);
 			this->click_set->Controls->Add(this->dc);
 			this->click_set->Controls->Add(this->label5);
+			this->click_set->Controls->Add(this->label13);
 			this->click_set->Controls->Add(this->delSet);
-			this->click_set->Controls->Add(this->label4);
 			this->click_set->Location = System::Drawing::Point(196, 15);
 			this->click_set->Name = L"click_set";
-			this->click_set->Size = System::Drawing::Size(236, 263);
+			this->click_set->Size = System::Drawing::Size(236, 294);
 			this->click_set->TabIndex = 5;
 			this->click_set->TabStop = false;
 			this->click_set->Text = L"Left click settings";
@@ -209,9 +241,9 @@ namespace AutoClickerGui {
 			this->randomiseKeep->Controls->Add(this->maxScale);
 			this->randomiseKeep->Controls->Add(this->minScale);
 			this->randomiseKeep->Controls->Add(this->RandomiseBox);
-			this->randomiseKeep->Location = System::Drawing::Point(7, 101);
+			this->randomiseKeep->Location = System::Drawing::Point(7, 118);
 			this->randomiseKeep->Name = L"randomiseKeep";
-			this->randomiseKeep->Size = System::Drawing::Size(222, 156);
+			this->randomiseKeep->Size = System::Drawing::Size(222, 170);
 			this->randomiseKeep->TabIndex = 4;
 			this->randomiseKeep->TabStop = false;
 			this->randomiseKeep->Text = L"Randomise delay";
@@ -219,7 +251,7 @@ namespace AutoClickerGui {
 			// label7
 			// 
 			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(6, 78);
+			this->label7->Location = System::Drawing::Point(6, 89);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(67, 16);
 			this->label7->TabIndex = 2;
@@ -228,7 +260,7 @@ namespace AutoClickerGui {
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(6, 50);
+			this->label6->Location = System::Drawing::Point(6, 61);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(80, 16);
 			this->label6->TabIndex = 2;
@@ -237,7 +269,7 @@ namespace AutoClickerGui {
 			// label9
 			// 
 			this->label9->AutoSize = true;
-			this->label9->Location = System::Drawing::Point(191, 78);
+			this->label9->Location = System::Drawing::Point(191, 89);
 			this->label9->Name = L"label9";
 			this->label9->Size = System::Drawing::Size(25, 16);
 			this->label9->TabIndex = 2;
@@ -246,7 +278,7 @@ namespace AutoClickerGui {
 			// label8
 			// 
 			this->label8->AutoSize = true;
-			this->label8->Location = System::Drawing::Point(191, 50);
+			this->label8->Location = System::Drawing::Point(191, 61);
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(25, 16);
 			this->label8->TabIndex = 2;
@@ -255,7 +287,7 @@ namespace AutoClickerGui {
 			// maxScale
 			// 
 			this->maxScale->Enabled = false;
-			this->maxScale->Location = System::Drawing::Point(95, 75);
+			this->maxScale->Location = System::Drawing::Point(95, 86);
 			this->maxScale->Name = L"maxScale";
 			this->maxScale->Size = System::Drawing::Size(90, 22);
 			this->maxScale->TabIndex = 1;
@@ -265,7 +297,7 @@ namespace AutoClickerGui {
 			// minScale
 			// 
 			this->minScale->Enabled = false;
-			this->minScale->Location = System::Drawing::Point(95, 47);
+			this->minScale->Location = System::Drawing::Point(95, 58);
 			this->minScale->Name = L"minScale";
 			this->minScale->Size = System::Drawing::Size(90, 22);
 			this->minScale->TabIndex = 1;
@@ -275,7 +307,7 @@ namespace AutoClickerGui {
 			// RandomiseBox
 			// 
 			this->RandomiseBox->AutoSize = true;
-			this->RandomiseBox->Location = System::Drawing::Point(6, 21);
+			this->RandomiseBox->Location = System::Drawing::Point(6, 36);
 			this->RandomiseBox->Name = L"RandomiseBox";
 			this->RandomiseBox->Size = System::Drawing::Size(99, 20);
 			this->RandomiseBox->TabIndex = 0;
@@ -314,7 +346,7 @@ namespace AutoClickerGui {
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(10, 25);
+			this->label4->Location = System::Drawing::Point(6, 18);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(46, 16);
 			this->label4->TabIndex = 0;
@@ -324,7 +356,7 @@ namespace AutoClickerGui {
 			// 
 			this->applyButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->applyButton->Location = System::Drawing::Point(22, 232);
+			this->applyButton->Location = System::Drawing::Point(20, 273);
 			this->applyButton->Name = L"applyButton";
 			this->applyButton->Size = System::Drawing::Size(150, 36);
 			this->applyButton->TabIndex = 4;
@@ -397,9 +429,14 @@ namespace AutoClickerGui {
 			// 
 			// groupBox2
 			// 
+			this->groupBox2->Controls->Add(this->groupBox3);
+			this->groupBox2->Controls->Add(this->textBox1);
+			this->groupBox2->Controls->Add(this->comboBox1);
+			this->groupBox2->Controls->Add(this->label11);
+			this->groupBox2->Controls->Add(this->label10);
 			this->groupBox2->Location = System::Drawing::Point(461, 31);
 			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Size = System::Drawing::Size(208, 283);
+			this->groupBox2->Size = System::Drawing::Size(209, 185);
 			this->groupBox2->TabIndex = 5;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Key settings";
@@ -418,7 +455,7 @@ namespace AutoClickerGui {
 			// menuStrip1
 			// 
 			this->menuStrip1->ImageScalingSize = System::Drawing::Size(20, 20);
-			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->FileMenu });
+			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) { this->FileMenu, this->aboutToolStripMenuItem });
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
 			this->menuStrip1->Size = System::Drawing::Size(682, 28);
@@ -449,6 +486,12 @@ namespace AutoClickerGui {
 			this->LoadButton->Text = L"Load";
 			this->LoadButton->Click += gcnew System::EventHandler(this, &MainWind::OpenActClick);
 			// 
+			// aboutToolStripMenuItem
+			// 
+			this->aboutToolStripMenuItem->Name = L"aboutToolStripMenuItem";
+			this->aboutToolStripMenuItem->Size = System::Drawing::Size(64, 24);
+			this->aboutToolStripMenuItem->Text = L"About";
+			// 
 			// OpenDia
 			// 
 			this->OpenDia->FileName = L"default.cfg";
@@ -457,11 +500,134 @@ namespace AutoClickerGui {
 			// 
 			this->SaveDia->FileName = L"default.cfg";
 			// 
+			// label10
+			// 
+			this->label10->AutoSize = true;
+			this->label10->Location = System::Drawing::Point(3, 35);
+			this->label10->Name = L"label10";
+			this->label10->Size = System::Drawing::Size(50, 16);
+			this->label10->TabIndex = 0;
+			this->label10->Text = L"Button: ";
+			// 
+			// comboBox1
+			// 
+			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Location = System::Drawing::Point(53, 32);
+			this->comboBox1->Name = L"comboBox1";
+			this->comboBox1->Size = System::Drawing::Size(65, 24);
+			this->comboBox1->TabIndex = 1;
+			// 
+			// textBox1
+			// 
+			this->textBox1->Location = System::Drawing::Point(170, 32);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(32, 22);
+			this->textBox1->TabIndex = 8;
+			// 
+			// label11
+			// 
+			this->label11->AutoSize = true;
+			this->label11->Location = System::Drawing::Point(124, 35);
+			this->label11->Name = L"label11";
+			this->label11->Size = System::Drawing::Size(40, 16);
+			this->label11->TabIndex = 7;
+			this->label11->Text = L"Bind: ";
+			// 
+			// groupBox3
+			// 
+			this->groupBox3->Controls->Add(this->checkBox1);
+			this->groupBox3->Controls->Add(this->button2);
+			this->groupBox3->Controls->Add(this->textBox2);
+			this->groupBox3->Controls->Add(this->label12);
+			this->groupBox3->Controls->Add(this->label4);
+			this->groupBox3->Location = System::Drawing::Point(9, 67);
+			this->groupBox3->Name = L"groupBox3";
+			this->groupBox3->Size = System::Drawing::Size(192, 112);
+			this->groupBox3->TabIndex = 9;
+			this->groupBox3->TabStop = false;
+			this->groupBox3->Text = L"Settings";
+			// 
+			// button2
+			// 
+			this->button2->Location = System::Drawing::Point(113, 70);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(73, 35);
+			this->button2->TabIndex = 10;
+			this->button2->Text = L"Save";
+			this->button2->UseVisualStyleBackColor = true;
+			// 
+			// textBox2
+			// 
+			this->textBox2->Location = System::Drawing::Point(58, 15);
+			this->textBox2->Name = L"textBox2";
+			this->textBox2->Size = System::Drawing::Size(88, 22);
+			this->textBox2->TabIndex = 1;
+			this->textBox2->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
+			this->textBox2->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MainWind::DelayEnter);
+			// 
+			// label12
+			// 
+			this->label12->AutoSize = true;
+			this->label12->Location = System::Drawing::Point(152, 18);
+			this->label12->Name = L"label12";
+			this->label12->Size = System::Drawing::Size(25, 16);
+			this->label12->TabIndex = 2;
+			this->label12->Text = L"ms";
+			// 
+			// groupBox4
+			// 
+			this->groupBox4->Controls->Add(this->label14);
+			this->groupBox4->Location = System::Drawing::Point(460, 216);
+			this->groupBox4->Name = L"groupBox4";
+			this->groupBox4->Size = System::Drawing::Size(209, 130);
+			this->groupBox4->TabIndex = 8;
+			this->groupBox4->TabStop = false;
+			this->groupBox4->Text = L"Stamina settings";
+			// 
+			// label13
+			// 
+			this->label13->AutoSize = true;
+			this->label13->Location = System::Drawing::Point(10, 28);
+			this->label13->Name = L"label13";
+			this->label13->Size = System::Drawing::Size(46, 16);
+			this->label13->TabIndex = 0;
+			this->label13->Text = L"Delay:";
+			// 
+			// stamina_button
+			// 
+			this->stamina_button->AutoSize = true;
+			this->stamina_button->Location = System::Drawing::Point(13, 79);
+			this->stamina_button->Name = L"stamina_button";
+			this->stamina_button->Size = System::Drawing::Size(163, 20);
+			this->stamina_button->TabIndex = 5;
+			this->stamina_button->Text = L"Stamina applied [WIP]";
+			this->stamina_button->UseVisualStyleBackColor = true;
+			// 
+			// checkBox1
+			// 
+			this->checkBox1->AutoSize = true;
+			this->checkBox1->Location = System::Drawing::Point(9, 44);
+			this->checkBox1->Name = L"checkBox1";
+			this->checkBox1->Size = System::Drawing::Size(163, 20);
+			this->checkBox1->TabIndex = 5;
+			this->checkBox1->Text = L"Stamina applied [WIP]";
+			this->checkBox1->UseVisualStyleBackColor = true;
+			// 
+			// label14
+			// 
+			this->label14->AutoSize = true;
+			this->label14->Location = System::Drawing::Point(51, 58);
+			this->label14->Name = L"label14";
+			this->label14->Size = System::Drawing::Size(102, 16);
+			this->label14->TabIndex = 0;
+			this->label14->Text = L"COMING SOON";
+			// 
 			// MainWind
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(682, 453);
+			this->Controls->Add(this->groupBox4);
 			this->Controls->Add(this->linkLabel1);
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->keyPickerBut);
@@ -482,8 +648,14 @@ namespace AutoClickerGui {
 			this->click_set->PerformLayout();
 			this->randomiseKeep->ResumeLayout(false);
 			this->randomiseKeep->PerformLayout();
+			this->groupBox2->ResumeLayout(false);
+			this->groupBox2->PerformLayout();
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
+			this->groupBox3->ResumeLayout(false);
+			this->groupBox3->PerformLayout();
+			this->groupBox4->ResumeLayout(false);
+			this->groupBox4->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
