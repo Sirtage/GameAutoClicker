@@ -44,6 +44,9 @@
     <ClInclude Include="KeyElem.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="AboutDialog.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CppCLR_WinFormsProject.cpp">
@@ -63,6 +66,9 @@
     </ClCompile>
     <ClCompile Include="KeyPicker.cpp">
       <Filter>Source Files\keyPicker</Filter>
+    </ClCompile>
+    <ClCompile Include="AboutDialog.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
