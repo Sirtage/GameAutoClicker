@@ -10,6 +10,18 @@ bool checkNumb(std::string str) {
 	return std::regex_match(str, std::regex("^[0-9]*\\.*[0-9]*$"));
 }
 
+void lcmclick(int del) {
+	mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
+	Sleep(del);
+	mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+}
+
+void rcmclick(int del) {
+	mouse_event(MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, 0);
+	Sleep(del);
+	mouse_event(MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
+}
+
 System::Void AutoClickerGui::MainWind::Start(System::Object^ sender, System::EventArgs^ e) {
 	this->rand = gcnew Random();
 	this->button1->Enabled = false;
@@ -27,10 +39,10 @@ System::Void AutoClickerGui::MainWind::Start(System::Object^ sender, System::Eve
 				}
 			}
 
-			mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+			lcmclick(std::stoi(this->sets->operator[]("delHoldLeft")));
 			if (std::stoi(this->sets->operator[]("dcLeft"))) {
 				Sleep(1);
-				mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+				lcmclick(std::stoi(this->sets->operator[]("delHoldLeft")));
 			}
 
 			Sleep(delay);
@@ -46,10 +58,10 @@ System::Void AutoClickerGui::MainWind::Start(System::Object^ sender, System::Eve
 				}
 			}
 
-			mouse_event(MOUSEEVENTF_RIGHTDOWN | MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
+			rcmclick(std::stoi(this->sets->operator[]("delHoldRight")));
 			if (std::stoi(this->sets->operator[]("dcRight"))) {
 				Sleep(1);
-				mouse_event(MOUSEEVENTF_RIGHTDOWN | MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
+				rcmclick(std::stoi(this->sets->operator[]("delHoldRight")));
 			}
 			Sleep(delay);
 		}

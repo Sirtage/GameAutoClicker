@@ -48,6 +48,10 @@ namespace AutoClickerGui {
 	private: System::Windows::Forms::Label^ label12;
 	private: System::Windows::Forms::GroupBox^ groupBox4;
 	private: System::Windows::Forms::Label^ label14;
+	private: System::Windows::Forms::Label^ label16;
+	private: System::Windows::Forms::TextBox^ delHold;
+	private: System::Windows::Forms::Label^ label15;
+
 
 
 
@@ -59,7 +63,9 @@ namespace AutoClickerGui {
 			this->kb = new std::vector<KeyBlock>(0);
 			*this->sets = { {"enabled", "0"}, 
 				{"delLeft", "20"}, 
-				{"delRight", "10"}, 
+				{"delRight", "10"},
+				{"delHoldLeft", "20"},
+				{"delHoldRight", "10"},
 				{"bindLeft", "6"}, 
 				{"bindRight", "5"}, 
 				{"bindstop", "117"}, 
@@ -186,6 +192,9 @@ namespace AutoClickerGui {
 			this->SaveDia = (gcnew System::Windows::Forms::SaveFileDialog());
 			this->groupBox4 = (gcnew System::Windows::Forms::GroupBox());
 			this->label14 = (gcnew System::Windows::Forms::Label());
+			this->label15 = (gcnew System::Windows::Forms::Label());
+			this->delHold = (gcnew System::Windows::Forms::TextBox());
+			this->label16 = (gcnew System::Windows::Forms::Label());
 			this->groupBox1->SuspendLayout();
 			this->click_set->SuspendLayout();
 			this->randomiseKeep->SuspendLayout();
@@ -220,6 +229,9 @@ namespace AutoClickerGui {
 			// 
 			// click_set
 			// 
+			this->click_set->Controls->Add(this->label16);
+			this->click_set->Controls->Add(this->delHold);
+			this->click_set->Controls->Add(this->label15);
 			this->click_set->Controls->Add(this->stamina_button);
 			this->click_set->Controls->Add(this->randomiseKeep);
 			this->click_set->Controls->Add(this->dc);
@@ -236,7 +248,7 @@ namespace AutoClickerGui {
 			// stamina_button
 			// 
 			this->stamina_button->AutoSize = true;
-			this->stamina_button->Location = System::Drawing::Point(13, 79);
+			this->stamina_button->Location = System::Drawing::Point(13, 109);
 			this->stamina_button->Name = L"stamina_button";
 			this->stamina_button->Size = System::Drawing::Size(163, 20);
 			this->stamina_button->TabIndex = 5;
@@ -252,9 +264,9 @@ namespace AutoClickerGui {
 			this->randomiseKeep->Controls->Add(this->maxScale);
 			this->randomiseKeep->Controls->Add(this->minScale);
 			this->randomiseKeep->Controls->Add(this->RandomiseBox);
-			this->randomiseKeep->Location = System::Drawing::Point(7, 118);
+			this->randomiseKeep->Location = System::Drawing::Point(7, 162);
 			this->randomiseKeep->Name = L"randomiseKeep";
-			this->randomiseKeep->Size = System::Drawing::Size(222, 170);
+			this->randomiseKeep->Size = System::Drawing::Size(222, 126);
 			this->randomiseKeep->TabIndex = 4;
 			this->randomiseKeep->TabStop = false;
 			this->randomiseKeep->Text = L"Randomise delay";
@@ -262,7 +274,7 @@ namespace AutoClickerGui {
 			// label7
 			// 
 			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(6, 89);
+			this->label7->Location = System::Drawing::Point(6, 74);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(67, 16);
 			this->label7->TabIndex = 2;
@@ -271,7 +283,7 @@ namespace AutoClickerGui {
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(6, 61);
+			this->label6->Location = System::Drawing::Point(6, 46);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(80, 16);
 			this->label6->TabIndex = 2;
@@ -280,7 +292,7 @@ namespace AutoClickerGui {
 			// label9
 			// 
 			this->label9->AutoSize = true;
-			this->label9->Location = System::Drawing::Point(191, 89);
+			this->label9->Location = System::Drawing::Point(191, 74);
 			this->label9->Name = L"label9";
 			this->label9->Size = System::Drawing::Size(25, 16);
 			this->label9->TabIndex = 2;
@@ -289,7 +301,7 @@ namespace AutoClickerGui {
 			// label8
 			// 
 			this->label8->AutoSize = true;
-			this->label8->Location = System::Drawing::Point(191, 61);
+			this->label8->Location = System::Drawing::Point(191, 46);
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(25, 16);
 			this->label8->TabIndex = 2;
@@ -298,7 +310,7 @@ namespace AutoClickerGui {
 			// maxScale
 			// 
 			this->maxScale->Enabled = false;
-			this->maxScale->Location = System::Drawing::Point(95, 86);
+			this->maxScale->Location = System::Drawing::Point(95, 71);
 			this->maxScale->Name = L"maxScale";
 			this->maxScale->Size = System::Drawing::Size(90, 22);
 			this->maxScale->TabIndex = 1;
@@ -308,7 +320,7 @@ namespace AutoClickerGui {
 			// minScale
 			// 
 			this->minScale->Enabled = false;
-			this->minScale->Location = System::Drawing::Point(95, 58);
+			this->minScale->Location = System::Drawing::Point(95, 43);
 			this->minScale->Name = L"minScale";
 			this->minScale->Size = System::Drawing::Size(90, 22);
 			this->minScale->TabIndex = 1;
@@ -318,7 +330,7 @@ namespace AutoClickerGui {
 			// RandomiseBox
 			// 
 			this->RandomiseBox->AutoSize = true;
-			this->RandomiseBox->Location = System::Drawing::Point(6, 36);
+			this->RandomiseBox->Location = System::Drawing::Point(6, 21);
 			this->RandomiseBox->Name = L"RandomiseBox";
 			this->RandomiseBox->Size = System::Drawing::Size(99, 20);
 			this->RandomiseBox->TabIndex = 0;
@@ -329,7 +341,7 @@ namespace AutoClickerGui {
 			// dc
 			// 
 			this->dc->AutoSize = true;
-			this->dc->Location = System::Drawing::Point(13, 53);
+			this->dc->Location = System::Drawing::Point(13, 83);
 			this->dc->Name = L"dc";
 			this->dc->Size = System::Drawing::Size(103, 20);
 			this->dc->TabIndex = 3;
@@ -579,14 +591,14 @@ namespace AutoClickerGui {
 			// SaveButton
 			// 
 			this->SaveButton->Name = L"SaveButton";
-			this->SaveButton->Size = System::Drawing::Size(125, 26);
+			this->SaveButton->Size = System::Drawing::Size(224, 26);
 			this->SaveButton->Text = L"Save";
 			this->SaveButton->Click += gcnew System::EventHandler(this, &MainWind::SaveActClick);
 			// 
 			// LoadButton
 			// 
 			this->LoadButton->Name = L"LoadButton";
-			this->LoadButton->Size = System::Drawing::Size(125, 26);
+			this->LoadButton->Size = System::Drawing::Size(224, 26);
 			this->LoadButton->Text = L"Load";
 			this->LoadButton->Click += gcnew System::EventHandler(this, &MainWind::OpenActClick);
 			// 
@@ -623,6 +635,32 @@ namespace AutoClickerGui {
 			this->label14->Size = System::Drawing::Size(102, 16);
 			this->label14->TabIndex = 0;
 			this->label14->Text = L"COMING SOON";
+			// 
+			// label15
+			// 
+			this->label15->AutoSize = true;
+			this->label15->Location = System::Drawing::Point(10, 58);
+			this->label15->Name = L"label15";
+			this->label15->Size = System::Drawing::Size(42, 16);
+			this->label15->TabIndex = 6;
+			this->label15->Text = L"Hold: ";
+			// 
+			// delHold
+			// 
+			this->delHold->Location = System::Drawing::Point(61, 55);
+			this->delHold->Name = L"delHold";
+			this->delHold->Size = System::Drawing::Size(88, 22);
+			this->delHold->TabIndex = 7;
+			this->delHold->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
+			// 
+			// label16
+			// 
+			this->label16->AutoSize = true;
+			this->label16->Location = System::Drawing::Point(155, 58);
+			this->label16->Name = L"label16";
+			this->label16->Size = System::Drawing::Size(25, 16);
+			this->label16->TabIndex = 8;
+			this->label16->Text = L"ms";
 			// 
 			// MainWind
 			// 
@@ -688,6 +726,7 @@ namespace AutoClickerGui {
 		std::string key = fw::conv(clickType->Text);
 		bindPicker->Text = fw::conv(this->sets->operator[]("bind" + key));
 		delSet->Text = fw::conv(this->sets->operator[]("del" + key));
+		delHold->Text = fw::conv(this->sets->operator[]("delHold" + key));
 		dc->Checked = std::stoi(this->sets->operator[]("dc" + key));
 		RandomiseBox->Checked = std::stoi(this->sets->operator[]("rnd" + key));
 		minScale->Text = fw::conv(this->sets->operator[]("rndd" + key));
@@ -707,6 +746,7 @@ namespace AutoClickerGui {
 	private: System::Void ApplyClick(System::Object^ sender, System::EventArgs^ e) {
 		std::string key = fw::conv(clickType->Text);
 		this->sets->insert_or_assign("del" + key, fw::conv(delSet->Text));
+		this->sets->insert_or_assign("delHold" + key, fw::conv(delHold->Text));
 		this->sets->insert_or_assign("bind" + key, fw::conv(bindPicker->Text));
 		this->sets->insert_or_assign("dc" + key, dc->Checked ? "1" : "0");
 		this->sets->insert_or_assign("rnd" + key, RandomiseBox->Checked ? "1" : "0");
@@ -753,5 +793,5 @@ namespace AutoClickerGui {
 		AboutDialog^ abt = gcnew AboutDialog();
 		abt->ShowDialog();
 	}
-	};
+};
 }
