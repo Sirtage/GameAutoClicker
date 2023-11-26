@@ -783,6 +783,7 @@ namespace AutoClickerGui {
 			std::string key = fw::conv(clickType->Text);
 			bindPicker->Text = fw::conv(this->sets->operator[]("bind" + key));
 			delSet->Text = fw::conv(this->sets->operator[]("del" + key));
+			delHold->Text = fw::conv(this->sets->operator[]("delHold" + key));
 			dc->Checked = std::stoi(this->sets->operator[]("dc" + key));
 			RandomiseBox->Checked = std::stoi(this->sets->operator[]("rnd" + key));
 			minScale->Text = fw::conv(this->sets->operator[]("rndd" + key));
