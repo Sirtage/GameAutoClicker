@@ -82,7 +82,7 @@ namespace AutoClickerGui {
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(294, 64);
 			this->label3->TabIndex = 2;
-			this->label3->Text = L"Features: Uhm, config system, single threading \r\nand other siht like that.\r\nWhat "
+			this->label3->Text = L"Features: Uhm, config system, single threading \r\nand other shit like that.\r\nWhat "
 				L"did you expect of weird random autoclicker\r\nfrom github man.\r\n";
 			// 
 			// AboutDialog
